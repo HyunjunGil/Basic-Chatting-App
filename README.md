@@ -1,3 +1,29 @@
+0. 꾸미는 것은 나중에 여유로울 때.
+
+1. firebase에 userInfo라는 collection을 만들어서 sign up한 유저들의 정보를 저장해놓음. 여기에 저장되는 정보의 형식은 다음과 같다
+- emailAddress: 이메일 주소 저장 
+- password: 비밀번호
+- firstName: 성
+- lastName: 이름
+- nickName: 닉네임. 실제 채팅에서 보일 이름
+- uid: 각 유저의 고유 식별자
+
+2. 로그인 한 상태로 채팅을 치면 '닉네임: 내용'의 형식으로 글이 나옴. 만약 로그인이 되어있지 않으면 닉네임은 default로 'Anonymous'로 설정
+
+3. 유저가 채팅을 친 순서대로 채팅이 정렬되도록 함. 방법은 chat collection의 각 문서에 chatCnt를 추가하여 useEffect에서 데이터를 불러온
+데이터를 chatCnt로 정렬하도록 함. 이 chatCnt는 chat이 비어있지 않으면 새로고침할 때마다 현재의 chat 중 가장 큰 chatCnt 값에 1을 더한 값으로
+설정된다. 만약 chatCnt가 비어있으면 0부터 시작한다.
+
+4. Sign up페이지를 분리하였다. 받아온 정보들을 firebase의 userInfo collection에 저장한다.
+
+5. 추가하고 싶은 것
+- '언제' 채팅을 쳤는지 함께 기록
+- 채팅을 수정하거나 삭제할 때 작성한 사람만이 가능하게 하고, 특히 수정했을 때는 수정된 글에 몇 번 수정됐는지 표시
+- 성파님이 올려준 수정본에서 나온 것 처럼 채팅방 구현
+- UI 정리. 예를 들어 채팅 올라오는 곳을 오른쪽으로 빼고 div를 지정해서 카카오톡 처럼 채팅이 위로 쌓이다가 height가 넘어가면 스크롤바가
+생기도록 (overflow: hidden?)
+-  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
