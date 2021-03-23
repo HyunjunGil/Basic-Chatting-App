@@ -22,7 +22,7 @@
 - 성파님이 올려준 수정본에서 나온 것 처럼 채팅방 구현
 - UI 정리. 예를 들어 채팅 올라오는 곳을 오른쪽으로 빼고 div를 지정해서 카카오톡 처럼 채팅이 위로 쌓이다가 height가 넘어가면 스크롤바가
 생기도록 (overflow: hidden?)
--  
+-  비번칠 때 안보이도록( *로 표시 )
 
 # Getting Started with Create React App
 

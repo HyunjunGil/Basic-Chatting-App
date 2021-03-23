@@ -39,10 +39,7 @@ function App() {
             id: doc.id,
             ...doc.data(),
           }));
-          console.log('check here22222');
-          console.log(data);
           let currentUser = data.filter(x => x.uid === uid);
-          console.log(currentUser);
           setNickName(currentUser[0].nickName);
     
     
@@ -54,7 +51,6 @@ function App() {
         setPassword("");
 
         history.push("/");
-        console.log('what?');
       }else{
         alert('error');
       }
@@ -69,6 +65,7 @@ function App() {
   const logout = () => {
     firebaseApp.auth().signOut();
     setLoginStatus(false);
+    setNickName("Anonymous");
   }
 
   const signUp = () => {
@@ -86,7 +83,6 @@ function App() {
       })
       .then((ref) => {
         setChatContent('');
-        console.log(ref);
         setChatCnt(cnt => cnt + 1);
       })
     
@@ -122,18 +118,15 @@ function App() {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log('check here');
-      console.log(data);
       if (data.length) {
         data.sort((x, y) => {return x.cnt - y.cnt})
-        setChatCnt(data[data.length - 1].cnt)
+        setChatCnt(data[data.length - 1].cnt + 1)
       }
       setChats(data);
       //id, content
 
 
     })
-    console.log(chatRef);
   }, [])
 
   useEffect(() => {
@@ -200,7 +193,7 @@ function App() {
       {
         chats.map((chat) => {
           return <div onClick = {evt => deleteDocument(chat.id)}>
-            ({chat.cnt}) {chat.nickName}: {chat.content}
+            {chat.nickName}: {chat.content}
           </div>
         })
       }
