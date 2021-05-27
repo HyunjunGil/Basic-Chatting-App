@@ -93,7 +93,7 @@ function App() {
 
     chatRef
       .update({
-        content: updatedContent 
+        content: updatedContent
       })
       .then(() => {
         setTargetDocumentId("");
